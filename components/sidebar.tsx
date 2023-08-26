@@ -19,24 +19,18 @@ const routes = [
   {
     icon: Home,
     href: '/',
-    label: "Home",
+    label: "Companions",
     pro: false,
-  },
-  {
-    icon: Plus,
-    href: '/companion/new',
-    label: "Create",
-    pro: true,
-  },
+  },/*
   {
     label: 'Dashboard',
     icon: LayoutDashboard,
     href: '/dashboard',
     color: "text-sky-500",
     pro: false,
-  },
+  },*/
   {
-    label: 'Conversation',
+    label: 'AI Helper',
     icon: MessageSquare,
     href: '/conversation',
     color: "text-violet-500",
@@ -69,6 +63,12 @@ const routes = [
     color: "text-green-700",
     href: '/code',
     pro: false,
+  },
+  {
+    icon: Plus,
+    href: '/companion/new',
+    label: "Create",
+    pro: true,
   },
   {
     label: 'Settings',

@@ -38,7 +38,7 @@ export const FreeCounter = ({
           {apiLimitCount}
         </div>
         <div className="flex flex-col gap-y-2 items-center flex-1">
-          Free Queries
+          Queries
         </div>
       </div>
   )
