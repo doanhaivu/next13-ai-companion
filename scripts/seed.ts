@@ -12,11 +12,11 @@ interface SeedFileData {
   SEED_CHAT: string;
 }*/
 
-async function readFilesInFolder(folderPath) {
+async function readFilesInFolder(folderPath: any) {
   // Read the contents of the folder
   const files = fs.readdirSync(folderPath);
   // Loop through each file and create an object with PREAMBLE and SEED_CHAT properties
-  const data = files.map((file) => {
+  const data = files.map((file: any) => {
     // Read the contents of the file
     const text = fs.readFileSync(path.join(folderPath, file), "utf8");
 
@@ -64,7 +64,7 @@ async function seedCompanions() {
 
     const folderPath = path.join(__dirname, '..', 'companions');
     const data = await readFilesInFolder(folderPath);
-    const companions = data.map(async (item) => {
+    const companions = data.map(async (item: any) => {
         await db.companion.create({
           data: { 
           id: randomUUID(),

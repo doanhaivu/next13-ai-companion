@@ -1,14 +1,15 @@
-import { Icon } from "lucide-react";
+// import { Icon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-interface HeadingProps {
-  title: string;
-  description: string;
-  icon: Icon;
-  iconColor?: string;
-  bgColor?: string;
-}
+
+// interface HeadingProps {
+//   title: string;
+//   description: string;
+//   icon: Icon;
+//   iconColor?: string;
+//   bgColor?: string;
+// }
 
 export const Heading = ({
   title,
@@ -16,7 +17,7 @@ export const Heading = ({
   icon: Icon,
   iconColor,
   bgColor,
-}: HeadingProps) => {
+}: any) => {
   return (
     <>
       <div className="px-4 lg:px-8 flex items-center gap-x-3 mb-8">

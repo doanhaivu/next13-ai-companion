@@ -14,17 +14,19 @@ import { useProModal } from "@/hooks/use-pro-modal";
 const font = Poppins({ weight: "600", subsets: ["latin"] });
 interface NavbarProps {
   isPro: boolean;
+  apiLimitCount: number;
 }
 
 export const Navbar = ({
-  isPro
+  isPro,
+  apiLimitCount,
 }: NavbarProps) => {
   const proModal = useProModal();
 
   return ( 
     <div className="fixed w-full z-50 flex justify-between items-center py-2 px-4 h-16 border-b border-primary/10 bg-secondary">
       <div className="flex items-center">
-        <MobileSidebar isPro={isPro} />
+        <MobileSidebar isPro={isPro} apiLimitCount={apiLimitCount} />
         <Link href="/">
           <h1 className={cn("hidden md:block text-xl md:text-3xl font-bold text-primary", font.className)}>
             companion.ai

@@ -14,7 +14,7 @@ const RootLayout = async ({
 
   return ( 
     <div className="h-full">
-      <Navbar isPro={isPro} />
+      <Navbar isPro={isPro} apiLimitCount={apiLimitCount} />
       <div className="hidden md:flex mt-16 h-full w-20 flex-col fixed inset-y-0">
         <Sidebar isPro={isPro} apiLimitCount={apiLimitCount}/>
       </div>

@@ -124,7 +124,7 @@ const CodePage = () => {
                   message.role === "user" ? "bg-white border border-black/10" : "bg-muted",
                 )}
               >
-                {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
+                {message.role === "user" ? <UserAvatar /> : <BotAvatar src={"/logo.png"} />}
                 <ReactMarkdown components={{
                   pre: ({ node, ...props }) => (
                     <div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg">
