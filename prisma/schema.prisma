@@ -18,7 +18,6 @@ model Category {
 model Companion {
   id                String @id @default(uuid())
   userId            String
-  userName          String
   src               String
   name              String @db.Text
   description       String
@@ -75,4 +74,15 @@ model UserApiLimit {
   maxAllowance    Int      @default(30)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+}
+
+model Profile {
+  id String @id @default(uuid())
+  userId String @unique
+  userName String
+  imageUrl String @db.Text
+  email String @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

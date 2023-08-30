@@ -58,6 +58,9 @@ export const getApiLimitCount = async () => {
   });
 
   if (!userApiLimit) {
+    await prismadb.userApiLimit.create({
+      data: { userId: userId, count: 0 },
+    });
     return 0;
   }
 

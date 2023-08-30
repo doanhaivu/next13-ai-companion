@@ -9,6 +9,9 @@ import { MemoryManager } from "@/lib/memory";
 import { rateLimit } from "@/lib/rate-limit";
 import prismadb from "@/lib/prismadb";
 
+import { checkSubscription } from "@/lib/subscription";
+import { incrementApiLimit, checkApiLimit } from "@/lib/api-limit";
+
 dotenv.config({ path: `.env` });
 
 export async function POST(
@@ -21,6 +24,11 @@ export async function POST(
 
     if (!user || !user.firstName || !user.id) {
       return new NextResponse("Unauthorized", { status: 401 });
+    }
+    const freeTrial = await checkApiLimit();
+    const isPro = await checkSubscription();
+    if (!freeTrial && !isPro) {
+      return new NextResponse("Free trial has expired. Please upgrade to pro.", { status: 403 });
     }
 
     const identifier = request.url + "-" + user.id;
@@ -98,11 +106,13 @@ export async function POST(
       await model
         .call(
           `
-        Below are relevant details past conversation you are in.
+        ONLY generate plain sentences without prefix of who is speaking. DO NOT use ${companion.name}: prefix.
+
+        Below are relevant conversations you are in.
         ${relevantHistory}
 
 
-        ${recentChatHistory}:`
+        ${recentChatHistory}\n${companion.name}:`
         )
         .catch(console.error)
     );
@@ -136,6 +146,10 @@ export async function POST(
       });
     }
 
+    if (!isPro) {
+      await incrementApiLimit();
+    }
+  
     return new StreamingTextResponse(s);
   } catch (error) {
     return new NextResponse("Internal Error", { status: 500 });

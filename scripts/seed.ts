@@ -75,7 +75,7 @@ async function seedCompanions() {
           instructions: item.PREAMBLE,
           category: { connect: { id: category.id } },
           seed: item.SEED_CHAT,
-          src: '',
+          src: null,
           shownOnDashboard: true
         }
       });
